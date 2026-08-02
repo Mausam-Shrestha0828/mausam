@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Station</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-condition="default" data-time="day">
+
+  <div class="sky" aria-hidden="true">
+    <div class="sky__rays"></div>
+    <div class="sky__clouds"></div>
+    <div class="sky__rain"></div>
+    <div class="sky__snow"></div>
+  </div>
+
+  <main class="page">
+
+    <header class="masthead">
+    
+      <h1 class="masthead__title">Mausam Bhibhag</h1>
+      <p class="masthead__sub">A quiet instrument for reading the sky, anywhere,anytime.</p>
+    </header>
+
+    <form class="lookup" id="lookupForm" autocomplete="off">
+      <label class="lookup__label" for="cityInput">Station location</label>
+      <div class="lookup__row">
+        <input
+          type="text"
+          id="cityInput"
+          class="lookup__input"
+          placeholder="eg. Kathmandu, Nepal, Morang etc."
+          aria-label="City name"
+        >
+        <button type="submit" class="lookup__button" id="lookupButton">
+          <span>Read the sky</span>
+        </button>
+      </div>
+    
+    </form>
+
+    <section class="panel" id="panel" hidden>
+      <div class="panel__top">
+        <div class="panel__place">
+          <h2 class="panel__city" id="cityName">—</h2>
+          <p class="panel__meta" id="cityMeta">—</p>
+        </div>
+        <div class="panel__icon" id="iconSlot" aria-hidden="true"></div>
+      </div>
+
+      <div class="panel__reading">
+        <span class="panel__temp" id="temp">—°</span>
+        <div class="panel__readingSide">
+          <p class="panel__desc" id="desc">—</p>
+          <p class="panel__feels" id="feels">—</p>
+        </div>
+      </div>
+
+      <div class="panel__gauges">
+        <div class="gauge">
+          <span class="gauge__label">Wind</span>
+          <div class="gauge__value">
+            <svg class="gauge__needle" id="windNeedle" viewBox="0 0 24 24" width="16" height="16">
+              <path d="M12 2 L16 12 L12 9 L8 12 Z" fill="currentColor"/>
+            </svg>
+            <span id="windSpeed">—</span>
+          </div>
+        </div>
+        <div class="gauge">
+          <span class="gauge__label">Humidity</span>
+          <div class="gauge__value"><span id="humidity">—</span></div>
+        </div>
+        <div class="gauge">
+          <span class="gauge__label">Pressure</span>
+          <div class="gauge__value"><span id="pressure">—</span></div>
+        </div>
+      </div>
+
+      <p class="panel__stamp" id="stamp">—</p>
+    </section>
+
+    <section class="notice" id="notice" hidden>
+      <p class="notice__title" id="noticeTitle">No such station found.</p>
+      <p class="notice__body" id="noticeBody">Check the spelling and try again.</p>
+    </section>
+
+    <section class="loading" id="loading" hidden>
+   
+    </section>
+
+    <details class="keybox" id="keybox">
+      <summary>Set API key</summary>
+      <div class="keybox__row">
+        <input type="text" id="apiKeyInput" class="keybox__input" placeholder="Your OpenWeatherMap API key">
+        <button type="button" class="keybox__save" id="saveKeyButton">Save key</button>
+      </div>
+    
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
